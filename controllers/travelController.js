@@ -1,9 +1,10 @@
+//CONTROLLER
 var express = require("express");
 
 var router = express.Router();
 
 // Import the model (cat.js) to use its database functions.
-var cat = require("../models/cat.js");
+var travellers = require("../models/travellers.js");
 
 router.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "public/index.html"));
@@ -11,29 +12,38 @@ router.get("/", function(req, res) {
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/data", function(req, res) {
-  cat.all(function(data) {
-    res.json({ cats: data });
+  travellers.all(function(data) {
+    res.json({ traveller: data });
   });
 });
 
-router.post("/api/cats", function(req, res) {
-  cat.create([
-    "name", "sleepy"
+router.post("/api/travellerData", function(req, res) {
+  travellers.create([
+    "USERNAME", 
+    "CITY",
+    "USER_PASSWORD",
+    "COUNTRY",
+    "ATTR_NAME",
   ], [
-    req.body.name, req.body.sleepy
+    req.body.USERNAME, req.body.CITY, req.body.USER_PASSWORD, req.body.USER_COUNTRY,req.body.ATTR_NAME 
   ], function(result) {
     // Send back the ID of the new quote
+    //MAY GET ERROR , IF SO UPDATE
     res.json({ id: result.insertId });
   });
 });
 
-router.put("/api/cats/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+router.put("/api/travellerData/:ENTRY_ID", function(req, res) {
+  var condition = "ENTRY_ID= " + req.params.ENTRY_ID;
 
   console.log("condition", condition);
 
   cat.update({
-    sleepy: req.body.sleepy
+    USERNAME: req.body.USERNAME,
+    CITY: req.body.CITY,
+    USER_PASSWORD: req.body.USER_PASSWORD,
+    COUNTRY: req.body.USER_COUNTRY,
+    ATTR_NAME: req.body.ATTR_NAME,
   }, condition, function(result) {
     if (result.changedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
@@ -44,8 +54,8 @@ router.put("/api/cats/:id", function(req, res) {
   });
 });
 
-router.delete("/api/cats/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
+router.delete("/api/travellerData/:ENTRY_ID", function(req, res) {
+  var condition = "ENTRY_ID= " + req.params.id;
 
   cat.delete(condition, function(result) {
     if (result.affectedRows == 0) {
