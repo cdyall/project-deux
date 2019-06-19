@@ -1,37 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
-    <title>MVC With Cats!</title>
-    <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="/assets/js/cats.js"></script>
-  </head>
-  <body>
-    <h1>Cats!</h1>
+<html>
 
-    <h2>Cats that are not sleepy!</h2>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Carl's Travel Guide!</title>
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://files.slack.com/files-pri/TGJP6KHD1-FKBSLDTBM/smalllogo.png">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <!-- Bulma Version 0.7.5-->
+  <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
 
-    <ul id="notSleepyCats"></ul>
+<body>
+  <!-- START NAV -->
+  <nav class="navbar">
+    <div class="container">
 
-    <h2>Cats that are sleepy!</h2>
 
-    <ul id="sleepyCats"></ul>
-
-    <h2>Add a Cat</h2>
-    <form class="create-form">
-      <div class="form-group">
-        <label for="ca">Cat Name:</label>
-        <input type="text" id="ca" name="name" />
+      <div id="navbarMenu" class="navbar-menu">
+        <div class="navbar-end">
+          <a href="./index.html" class="navbar-item is-active">
+            Home
+          </a>
+          <a href="./results.html" class="navbar-item">
+            Results
+          </a>
+          <a href="./update.html" class="navbar-item">
+            Update
+          </a>
+          <a href="./upload.html" class="navbar-item">
+            Upload
+          </a>
+          <a href="./user.html" class="navbar-item">
+            User
+          </a>
+        </div>
       </div>
+    </div>
+  </nav>
+  <!-- END NAV -->
 
-      <div class="form-group">
-        <label for="sleepy">Sleepy?</label><br />
-        <input type="radio" name="sleepy" value="1" checked /> Sleepy!<br />
-        <input type="radio" name="sleepy" value="0" /> Awake
+  <section class="hero is-info is-medium is-bold">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">Welcome to our user run travel guide!</h1>
       </div>
+    </div>
+  </section>
 
-      <button type="submit">Add Cat</button>
-    </form>
-  </body>
+
+  <!-- username and password login -->
+  <div class="field">
+    <p class="control has-icons-left has-icons-right">
+      <input class="input" type="username" placeholder="Username">
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </p>
+  </div>
+  <div class="field">
+    <p class="control has-icons-left">
+      <input class="input" type="password" placeholder="Password">
+      <span class="icon is-small is-left">
+        <i class="fas fa-lock"></i>
+      </span>
+    </p>
+  </div>
+
+  <!-- button to login and sign up -->
+  <div class="field">
+    <p class="control">
+      <button class="button">
+        Login
+      </button>
+      <a class="button">Sign Up</a>
+    </p>
+  </div>
+  <p>Please press the "Add New" button bellow in order to post your top 3 favorite attractions!</p>
+
+  <!-- add new travel post -->
+  <a class="button">Add New</a>
+  <p>Use the search bar bellow to search a city and find recent posts!</p>
+
+  <!-- search bar -->
+  <div class="field is-grouped">
+    <p class="control is-expanded">
+      <input class="input" type="text" placeholder="Enter a City Here">
+    </p>
+    <p class="control">
+      <a class="button">
+        Search
+      </a>
+    </p>
+  </div>
+</body>
+
 </html>

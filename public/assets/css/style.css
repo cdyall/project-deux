@@ -1,4 +1,4 @@
-li {
+/* li {
   padding: 5px;
   margin: 5px;
   background: #faebd7;
@@ -16,4 +16,99 @@ li {
 
 .form-group {
   margin-bottom: 5px;
+} */
+.navbar {
+background-color:rgb(48, 48, 48);
 }
+
+body,
+html {
+  background: #000000;
+}
+
+/* login page css */
+.hero.is-success {
+  background-color: black;
+  color: #fff;
+}
+
+.box {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  background-color: rgb(0, 0, 0);
+}
+
+p, .label, a, .navbar-item {
+  color:white;
+}
+
+img {
+  height: 400px;
+  max-width: 100%;
+  margin-left: 320px;
+  margin-top: 50px;
+  z-index: 3;
+}
+
+.checkbox, .radio {
+  cursor: pointer;
+  display: inline-block;
+  line-height: 1.25;
+  position: relative;
+  color: white;
+}
+
+/* OTHER */
+pre,
+.message {
+  max-width: 960px;
+}
+
+.hero.is-info.is-bold {
+  background-image: linear-gradient(141deg,#000000 0,#000000 71%,#000000 100%);
+}
+
+li {margin: 10px}
+
+/* .hero.is-primary {
+background: linear-gradient(to top right, #d40000 10%, #D099FA);
+} */
+
+.box {
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.box span.icon {
+  float: right;
+  font-size: 1.7em;
+  padding: 2rem 2rem 0 0;
+}
+
+.is-large.fab {
+  font-size: 7em;
+}
+
+.is-large.fas {
+  font-size: 5em;
+  margin-left: 0.2em;
+}
+
+.media-content {overflow: hidden;}
+
+.menu-list li a:hover {
+  background: #d9d9d9;
+}
+
+.token.number {
+  display: inline;
+  padding: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: inherit;
+  vertical-align: inherit;
+  border-radius: inherit;
+  font-weight: inherit;
+  white-space: inherit;
+  background: inherit;
+  margin: inherit;
+}
+.footer {background-color: white;}
