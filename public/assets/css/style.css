@@ -32,6 +32,10 @@ html {
   color: #fff;
 }
 
+.title {
+  margin: auto;
+}
+
 .box {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
   background-color: rgb(0, 0, 0);
@@ -44,7 +48,7 @@ p, .label, a, .navbar-item {
 img {
   height: 400px;
   max-width: 100%;
-  margin-left: 320px;
+  margin-left: 360px;
   margin-top: 50px;
   z-index: 3;
 }
