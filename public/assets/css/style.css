@@ -48,7 +48,7 @@ p, .label, a, .navbar-item {
 img {
   height: 400px;
   max-width: 100%;
-  margin: 360px;
+  margin-left: 360px;
   margin-top: 50px;
   z-index: 3;
 }
