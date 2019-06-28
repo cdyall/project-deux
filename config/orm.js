@@ -81,7 +81,7 @@ var orm = {
   },
 
     create2: function(table2,cols, vals, cb) {
-      var queryString = "INSERT INTO " + table1;
+      var queryString = "INSERT INTO " + table2;
   
       queryString += " (";
       queryString += cols.toString();
