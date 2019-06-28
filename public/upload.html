@@ -11,8 +11,16 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   <!-- Bulma Version 0.7.5-->
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  
   <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+
+  
 </head>
 
 <body>
@@ -43,41 +51,74 @@
     please click the submit button found on the bottom of the page!</p>
   <!-- forms -->
   <div class="field">
+    <label class="label">User Name</label>
+    <div class="control">
+      <input class="input" type="text" id= "name" placeholder="User Name">
+    </div>
+  </div>
+
+  <div class="field">
     <label class="label">City</label>
     <div class="control">
-      <input class="input" type="City" placeholder="New York City">
+      <input class="input" type="text" id= "city" placeholder="New York City">
+    </div>
+  </div>
+
+
+  <div class="field">
+    <label class="label">State</label>
+    <div class="control">
+      <input class="input" type="text" id = "state" placeholder="NY">
     </div>
   </div>
 
   <div class="field">
     <label class="label">Country</label>
     <div class="control">
-      <input class="input" type="Country" placeholder="United States">
+      <input class="input" type="text"  id= "country" placeholder="United States">
     </div>
   </div>
 
   <div class="field">
     <label class="label">Attractions</label>
     <div class="control">
-      <input class="input" type="Country" placeholder="Central Park">
+      <input class="input" type="text"  id= "attr" placeholder="Central Park">
     </div>
     <div class="control">
-      <input class="input" type="Country" placeholder="Freedom Tower">
+      <input class="input" type="text" id= "attr"  placeholder="Freedom Tower">
     </div>
     <div class="control">
-      <input class="input" type="Country" placeholder="Hudson Yards">
+      <input class="input" type="text" id= "attr"  placeholder="Hudson Yards">
     </div>
   </div>
 
   <!-- submit button -->
   <div class="control">
-    <button class="button">Submit</button>
+    <button class="button" id = "add-btn">Submit</button>
   </div>
 
-
-
-
-
+<!-- 
+  <script type="text/javascript">
+  
+    // Question: What does this code do?
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+      var newAttr = {
+        USERNAME: $("#name") .val() .trim(),
+        ATTR_NAME: $("#attr") .val() .trim(),
+        CITY: $("#city") .val() .trim(),
+        STATE: $("#state") .val() .trim(),
+        COUNTY: $("#country") .val() .trim()
+      };
+      // Question: What does this code do??
+      $.post("/api/travellerData", newAttr)
+        .then(function(data) {
+          console.log("upload.html", data);
+          alert("Adding character...");
+        });
+    });
+  </script> -->
+  <script type="text/javascript" src="./assets/js/travelData.js"></script>
 </body>
 
 </html>

@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <!-- Bulma Version 0.7.5-->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://unpkg.com/bulma@0.7.5/css/bulma.min.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
     <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
@@ -46,6 +51,7 @@
         <div class="card content">
             <div class="content">
                 Hello and Welcome!
+                <div id="attrlist"></div>
             </div>
         </div>
     </div>
@@ -55,6 +61,40 @@
 <script src="login.js"></script>
 
     <script async type="text/javascript" src="../js/bulma.js"></script>
+
+    <!-- <script type="text/javascript">
+    $(function() {
+    $.ajax("/data", {
+        type: "GET"
+  }).then(function(data) {
+      console.log(data.traveller[0])
+    
+    var listmax = 20
+    for (var i = 0; i <  listmax; i++) {
+      var listInfo = data.traveller[i];
+      console.log(listInfo);
+     listCount = i + 1;
+      var $AttrDiv = $("<div>");
+      $AttrDiv.addClass("col-sm-3");
+      $("#attrlist").append($AttrDiv);
+      var USER =    $("<h2>").html(data.traveller[i].USERNAME);
+      var Attraction = $("<h3>").html(data.traveller[i].ATTR_NAME);
+      var City = $("<h4>").html(data.traveller[i].CITY);
+      var State = $("<h4>").html(data.traveller[i].STATE);
+      var Country = $("<h4>").html(data.traveller[i].COUNTRY);
+      $AttrDiv.append(USER);
+      $AttrDiv.append(Attraction);
+      $AttrDiv.append(City);
+      $AttrDiv.append(State);
+      $AttrDiv.append(Country);
+      $("#attrlist").append($AttrDiv);
+      
+    };
+  });
+})
+    </script> -->
+
+    <script type="text/javascript" src="./assets/js/travelData.js"></script>
 </body>
 
 </html>
