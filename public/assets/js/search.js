@@ -1,23 +1,30 @@
-$("#results").on("click", function (event) {
+$("#search").on("click", function (event) {
+  event.preventDefault();
+  $("#searchdump").empty();
 
-    // event.preventDefault() can be used to prevent an event's default behavior.
-    // Here, it prevents the submit button from trying to submit a form when clicked
-    event.preventDefault();
-    $("#results").empty();
-    // Here we grab the text from the input box
-    var city = $("#result").val();
-    
-    
-    // Here we construct our URL
-  
-    $.ajax({
-      url: "/api/ATTR",
-      method: "GET",
-      success: function(city){
-          $.each(city, function(i, attr){
-            $city.append('<li>Name: '+  city.CITY +', Attraction:  '+ city.ATTR_NAME +'</li>');
-          })
-      }
-    });
-   
+  var citysearch = $("#search-term").val();
+
+  $.ajax("/data" + citysearch, {
+      type: "GET"
+    }).then(function (data) {
+      var travelsearch = data.traveller;
+      var len = data.traveller.length
+      for (var i = 0; i < len; i++) {
+
+        var $CitySearchDiv = $("<div>");
+        $CitySearchDiv.addClass("col-sm-3");
+      $("#attrlist").append($CitySearchDiv);
+      var $CitySearchDiv = $("<div class='col-sm-3'>");
+      var city = $("<h2>").html(travelsearch.City);
+      var attraction = $("<h4>").html(travelsearch.Attraction);
+      var state= $("<h4>").html(travelsearch.State);
+      var country = $("<h4>").html(travelsearch.Country);
+      $CitySearchDiv.append(city);
+      $CitySearchDiv.append(attraction);
+      $CitySearchDiv.append(state);
+      $CitySearchDiv.append(country);
+      $("#attrlist").append(country);
+      
+    };
   });
+})
