@@ -18,7 +18,6 @@ then(function (response) {
       
     };
   });
-});
 
 $("#add-btn").on("submit", function (event){
     event.preventDefault();
