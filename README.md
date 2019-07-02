@@ -39,4 +39,4 @@ One issue that the group ran into was a lot of these ideas were difficult to put
 
 
 ## Credits
-Karl's Travel Guide was the work of multiple indivduals. Carl Lombardi contributed the namesake of the site and UI design. Stephen Magesty contributed UI design. Chris Dyall contributed database creation and intigration with the UI. Kenyel came up with the main idea of creating a travel guide with the assistance of Jaque.
+Karl's Travel Guide was the work of multiple indivduals. Carl Lombardi contributed the namesake of the site and UI design. Stephen Magesty contributed UI design. Chris Dyall contributed database creation and intigration with the UI. Kenyel Bunting came up with the main idea of creating a travel guide with the assistance of Jaque Perez.
