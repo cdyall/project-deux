@@ -13,19 +13,30 @@ $(function () {
       var travel2 = data.traveller[i]
       console.log("why", travel2);
       listCount = i + 1;
-      var $AttrDiv = $("<ul>");
+      var $AttrDiv = $("<ul >");
       $AttrDiv.addClass("list-group");
       $("#attrlist").append($AttrDiv);
       var USER = travel[i].USERNAME;
       console.log("duh", travel[i].USERNAME);
       var $AttrDivList = $("<li class='list-group-item'>");
+
+
       if (USER) {
-        $AttrDivList.append("<button class='change-sleep' data-id='" +
+        $AttrDivList.append("<button class='delete' data-id='" +
           "<span class='label label-primary'>" +
-          listCount +
+
           "</span>" + "</button>"
         );
       }
+
+      if (USER) {
+        $AttrDivList.append("<button class='update' data-id='" +
+          "<span class='label label-primary'>" +
+
+          "</span>" + "Update </button>"
+        );
+      }
+
       var Attraction = travel[i].ATTR_NAME;
       var City = travel[i].CITY
       var State = travel[i].STATE;
@@ -33,7 +44,8 @@ $(function () {
         State = " ";
       }
       var Country = travel[i].COUNTRY;
-      $AttrDivList.append("<h4>" + "USER: " + USER + "</h5>");
+
+      $AttrDivList.append("<h3>" + "USER: " + USER + "</h3>");
       $AttrDivList.append("<h5>" + "ATTRACTION: " + Attraction + "</h5>");
       $AttrDivList.append("<h5>" + "CITY: " + City + "</h5>");
       $AttrDivList.append("<h5>" + "STATE: " + State + "</h5>");
@@ -44,83 +56,72 @@ $(function () {
 
     };
   });
-})
 
-//     if (cats[i].sleepy) {
-//       new_elem += "SLEEP TIME!";
-//     } else {
-//       new_elem += "WAKE UP!";
-//     }
+  // UPDATE BUTTON/CALL
 
-//     Attraction += "</button>";
+  $(document).on("click", "update", function (event) {
+    var id = $(this).data("id");
+    var newupdate = $(this).data("update");
 
-//     new_elem +=
-//       "<button class='delete-cat' data-id='" +
-//       cats[i].id +
-//       "'>DELETE!</button></li>";
+    var update = {
+      attraction: newupdate,
+      city: newupdate,
+      state: newupdate,
+      country: newupdate
+    };
 
-//     if (cats[i].sleepy) {
-//       sleepyElem.append(new_elem);
-//     } else {
-//       nosleepyElem.append(new_elem);
-//     }
-//   }
-// });
-
-$(document).on("click", ".change-sleep", function (event) {
-  var id = $(this).data("id");
-  var newSleep = $(this).data("newsleep");
-
-  var newSleepState = {
-    sleepy: newSleep
-  };
-
-  // Send the PUT request.
-  $.ajax("/api/travellerData/" + id, {
-    type: "PUT",
-    data: updateAttr
-  }).then(function () {
-    console.log("changed sleep to", newSleep);
-    // Reload the page to get the updated list
-    location.reload("/create");
+    // Send the PUT request.
+    $.ajax("/api/travellerData/" + id, {
+      type: "PUT",
+      data: update
+    }).then(function () {
+      console.log("update to ", newupdate);
+      // Reload the page to get the updated list
+      location.replace("upload.html");
+    });
   });
-});
 
-$("#add-btn").on("click", function (event) {
-  event.preventDefault();
-  var newAttr = {
+  // ADD BUTTON
+  $("#add-btn").on("click", function (event) {
+    event.preventDefault();
+    var newAttr = {
       USERNAME: $("#name").val().trim(),
       ATTR_NAME: $("#attr").val().trim(),
       CITY: $("#city").val().trim(),
       STATE: $("#state").val().trim(),
       COUNTRY: $("#country").val().trim()
-  };
-  // Question: What does this code do??
-  console.log(newAttr)
-  $.ajax("/api/travellerData", {
+    };
+    // Question: What does this code do??
+    console.log(newAttr)
+    $.ajax("/api/travellerData", {
       type: "POST",
       data: newAttr,
-  }).then(function () {
+    }).then(function () {
       console.log("create new attr");
       // Reload the page to get the updated list
       location.replace("results2.html");
-  });
-});
-
-$(document).on("click", ".delete-cat", function (event) {
-  var id = $(this).data("id");
-
-  // Send the DELETE request.
-  $.ajax("/api/cats/" + id, {
-    type: "DELETE"
-  }).then(function () {
-    console.log("deleted cat", id);
-    // Reload the page to get the updated list
-    location.reload();
+    });
   });
 
+  // DELETE BUTTON/CALL
+  $(".delete").on("click", function (event) {
+    var id = $(this).data("id");
+
+    // Send the DELETE request.
+    $.ajax("/api/travellerData/" + id, {
+      type: "DELETE"
+    }).then(function () {
+      console.log("deleted ", id);
+      // Reload the page to get the updated list
+      location.reload();
+    });
+
+  });
+
+  //SEARCH CALL
   $("#search").on("click", function (event) {
     event.preventDefault();
+
     $("#searchdump").empty();
 
     var citysearch = $("#search-term").val();
@@ -149,5 +150,4 @@ $(document).on("click", ".delete-cat", function (event) {
       };
     });
   })
-
-});
+})
