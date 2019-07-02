@@ -45,22 +45,32 @@ var orm = {
   // SELECT * FROM USERS
   // JOIN ATTR
   // ON USERS.id = ATTR.USER_id;
-
-  all: function(TABONEUSERS, TABTWOATTR, onTableOneCol, onTableTwoCol, cb) {
-    var queryString = "SELECT * FROM " + TABONEUSERS
-    queryString += " RIGHT JOIN " + TABTWOATTR;
-    queryString += " ON " + onTableOneCol, "=" , onTableTwoCol;
-    connection.query(
-      "SELECT * FROM USERS JOIN ATTR ON USERS.ID = ATTR.USER_ID;", function(err, result) {
+  
+  all: function(tableInput, cb) {
+    var queryString = "SELECT * FROM " + tableInput + ";";
+    connection.query(queryString, function(err, result) {
       if (err) {
-        throw err; 
+        throw err;
       }
       cb(result);
-      console.log(result)
     });
   },
-  create1: function(table1,cols, vals, cb) {
-    var queryString = "INSERT INTO " + table1;
+
+  // all: function(TABONEUSERS, TABTWOATTR, onTableOneCol, onTableTwoCol, cb) {
+  //   var queryString = "SELECT * FROM " + TABONEUSERS
+  //   queryString += " RIGHT JOIN " + TABTWOATTR;
+  //   queryString += " ON " + onTableOneCol, "=" , onTableTwoCol;
+  //   connection.query(
+  //     "SELECT * FROM USERS JOIN ATTR ON USERS.ID = ATTR.USER_ID;", function(err, result) {
+  //     if (err) {
+  //       throw err; 
+  //     }
+  //     cb(result);
+  //     console.log(result)
+  //   });
+  // },
+  create: function(table,cols, vals, cb) {
+    var queryString = "INSERT INTO " + table;
 
     queryString += " (";
     queryString += cols.toString();
@@ -80,29 +90,29 @@ var orm = {
     });
   },
 
-    create2: function(table2,cols, vals, cb) {
-      var queryString = "INSERT INTO " + table2;
+  //   create2: function(table2,cols, vals, cb) {
+  //     var queryString = "INSERT INTO " + table2;
   
-      queryString += " (";
-      queryString += cols.toString();
-      queryString += ") ";
-      queryString += "VALUES (";
-      queryString += printQuestionMarks(vals.length);
-      queryString += ") ";
+  //     queryString += " (";
+  //     queryString += cols.toString();
+  //     queryString += ") ";
+  //     queryString += "VALUES (";
+  //     queryString += printQuestionMarks(vals.length);
+  //     queryString += ") ";
   
-      console.log(queryString);
+  //     console.log(queryString);
   
-      connection.query(queryString, vals, function(err, result) {
-        if (err) {
-          throw err;
-        };
-        cb(result);
-      });
-    },
+  //     connection.query(queryString, vals, function(err, result) {
+  //       if (err) {
+  //         throw err;
+  //       };
+  //       cb(result);
+  //     });
+  //   },
 
-  // An example of objColVals would be {name: panther, sleepy: true}
-  update1: function(table1, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table1;
+  // // An example of objColVals would be {name: panther, sleepy: true}
+  update: function(table, objColVals, condition, cb) {
+    var queryString = "UPDATE " + table;
 
     queryString += " SET ";
     queryString += objToSql(objColVals);
@@ -119,15 +129,28 @@ var orm = {
     });
   },
 
-  update2: function(table2, objColVals, condition, cb) {
-    var queryString = "UPDATE " + table2;
+  // update2: function(table2, objColVals, condition, cb) {
+  //   var queryString = "UPDATE " + table2;
 
-    queryString += " SET ";
-    queryString += objToSql(objColVals);
+  //   queryString += " SET ";
+  //   queryString += objToSql(objColVals);
+  //   queryString += " WHERE ";
+  //   queryString += condition;
+
+  //   console.log(queryString);
+  //   connection.query(queryString, function(err, result) {
+  //     if (err) {
+  //       throw err;
+  //     }
+
+  //     cb(result);
+  //   });
+  // },
+  delete: function(table, condition, cb) {
+    var queryString = "DELETE FROM " + table;
     queryString += " WHERE ";
     queryString += condition;
 
-    console.log(queryString);
     connection.query(queryString, function(err, result) {
       if (err) {
         throw err;
@@ -136,33 +159,20 @@ var orm = {
       cb(result);
     });
   },
-  delete1: function(table1, condition, cb) {
-    var queryString = "DELETE FROM " + table1;
-    queryString += " WHERE ";
-    queryString += condition;
 
-    connection.query(queryString, function(err, result) {
-      if (err) {
-        throw err;
-      }
+// delete2: function(table2, condition, cb) {
+//   var queryString = "DELETE FROM " + table2;
+//   queryString += " WHERE ";
+//   queryString += condition;
 
-      cb(result);
-    });
-  },
+//   connection.query(queryString, function(err, result) {
+//     if (err) {
+//       throw err;
+//     }
 
-delete2: function(table2, condition, cb) {
-  var queryString = "DELETE FROM " + table2;
-  queryString += " WHERE ";
-  queryString += condition;
-
-  connection.query(queryString, function(err, result) {
-    if (err) {
-      throw err;
-    }
-
-    cb(result);
-  });
-}
+//     cb(result);
+//   });
+// }
 };
 
 // Export the orm object for the model (cat.js).

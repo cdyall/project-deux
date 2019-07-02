@@ -1,10 +1,12 @@
-$("#search").on("click", function (event) {
+  alert("hey");
+  
+  $("#search").on("click", function (event) {
   event.preventDefault();
   $("#searchdump").empty();
 
   var citysearch = $("#search-term").val();
 
-  $.ajax("/data" + citysearch, {
+  $.ajax("/data/" + citysearch, {
       type: "GET"
     }).then(function (data) {
       var travelsearch = data.traveller;
