@@ -1,4 +1,4 @@
-## Karl's Travel Guide-  (Site) https://github.com/cdyall/project-deux (Repo)
+## Karl's Travel Guide- https://young-escarpment-82623.herokuapp.com (Site) https://github.com/cdyall/project-deux (Repo)
 Our project is a new app which is similar to Yelp, but with a focus on niche activities in cities around the world. Feed your innate human desire to find new places to explore with the power of Karl's Travel Guide. Most often, when people travel to a new city, while they want to see the well known places, most people want to hit where the locals go. If you travel with Karl, a local guide is always by your side. 
 
 ## Why Karl's Travel Guide?
@@ -13,6 +13,20 @@ Karl's Travel Guide is built around a community of locals, showing off the cool 
 
 ## Code Example
 
+ var $AttrDiv = $("<div>");
+      $AttrDiv.addClass("col-sm-3");
+      $("#attrlist").append($AttrDiv);
+      var USER =  $("<h2>").html(travel[i].ID + " , " + travel[i].USERNAME);
+      var Attraction = $("<h3>").html(travel[i].ATTR_NAME);
+      var City = $("<h4>").html(travel[i].CITY);
+      var State = $("<h4>").html(travel[i].STATE);
+      var Country = $("<h4>").html(travel[i].COUNTRY);
+      $AttrDiv.append(USER);
+      $AttrDiv.append(Attraction);
+      $AttrDiv.append(City);
+      $AttrDiv.append(State);
+      $AttrDiv.append(Country);
+      $("#attrlist").append($AttrDiv);
 
 ## Installation
 No outside software is needed to use Karl's Travel Guide. Our application is web based and can be accessed by anybody at any time. 
@@ -21,7 +35,7 @@ No outside software is needed to use Karl's Travel Guide. Our application is web
 The beauty of Karl's Travel Guide is its simplicity and ease of use. An easy to navigate UI without clutter leads the end user through a rewarding, fun and informative expereince online leading to real life memories. 
 
 ## Issues and Solutions
-One issue that the group ran into was a lot of these ideas were difficult to put into practice during the development phase. For example, insomuch as the spirit of the app is based on local, small businesses it is possible to include chains and well known places as well due to any posts being immediatly visible. One solution would be a team of moderators who would approve all submissions to the site. Another option would be for moderator created pages showing off tourist spots which could then be rated on by users. 
+One issue that the group ran into was a lot of these ideas were difficult to put into practice during the development phase. For example, insomuch as the spirit of the app is based on local, small businesses it is possible to include chains and well known places as well due to any posts being immediatly visible. One solution would be a team of moderators who would approve all submissions to the site. Another option would be for moderator created pages showing off tourist spots which could then be rated on by users. We also want to add further functionality moving forward in terms of new locations. 
 
 
 ## Credits
