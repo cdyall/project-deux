@@ -71,11 +71,23 @@ pre,
   background-image: linear-gradient(141deg,#000000 0,#000000 71%,#000000 100%);
 }
 
+ul, li {
+  list-style-type: none;
+  }
+
 li {margin: 10px}
 
 /* .hero.is-primary {
 background: linear-gradient(to top right, #d40000 10%, #D099FA);
 } */
+
+
+
+.update, .delete {
+  float: right;
+  
+  margin-right: 20px;
+}
 
 .box {
   box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
