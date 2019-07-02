@@ -11,15 +11,19 @@ router.get("/", function (req, res) {
 });
 
 router.get("/create", function (req, res) {
-  res.sendFile(path.join(__dirname, "../public/user.html"));
+  res.sendFile(path.join(__dirname, "../public/results2.html"));
 });
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/data", function (req, res) {
-  travellerObj.traveller.all(function (data) {
+  travellerObj.all(function (data) {
     console.log(data.length);
     res.json({ traveller: data });
   });
+});
+
+router.get("/data/:city", function (req, res) {
+console.log(req.params)
 });
 //   travellers.all(function(data) {
 //     console.log(data.length);
@@ -28,34 +32,21 @@ router.get("/data", function (req, res) {
 
 
 router.post("/api/travellerData", function (req, res) {
-  console.log(req.body)
-  travellerObj.traveller.create1([
+  console.log("req", req.body)
+  travellerObj.create([
     "USERNAME",
-  ],
-    [req.body.USERNAME,]
-    , function (result) {
-      // Send back the ID of the new quote
-      //MAY GET ERROR , IF SO UPDATE
-      res.json({ id: result.insertId });
-    })
-
-});
-
-router.post("/api/travellerData", function (req, res) {
-  console.log(req.body)
-  travellerObj.travellerAttr.create2([
     "ATTR_NAME",
     "CITY",
     "STATE",
     "COUNTRY",
-  ],
-    [req.body.ATTR_NAME, req.body.CITY, req.body.STATE, req.body.USER_COUNTRY,
+
+  ], [
+    req.body.USERNAME, req.body.ATTR_NAME, req.body.CITY, req.body.STATE, req.body.COUNTRY
     ], function (result) {
       // Send back the ID of the new quote
-      //MAY GET ERROR , IF SO UPDATE
       res.json({ id: result.insertId });
-    })
-
+      console.log("jj", result)
+    });
 });
 
 router.put("/api/travellerData/:ID", function (req, res) {
@@ -63,7 +54,7 @@ router.put("/api/travellerData/:ID", function (req, res) {
 
   console.log("condition", condition);
 
-  travellerObj.travellerAttr.update2({
+  travellerObj.update({
     ATTR_NAME: req.body.ATTR_NAME,
     CITY: req.body.CITY,
     STATE: req.body.STATE,
@@ -82,7 +73,7 @@ router.put("/api/travellerData/:ID", function (req, res) {
 router.delete("/api/travellerData/:ID", function (req, res) {
   var condition = "ID= " + req.params.id;
 
-  travellerObj.travellerAttr.delete2(condition, function (result) {
+  travellerObj.delete(condition, function (result) {
     if (result.affectedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();
